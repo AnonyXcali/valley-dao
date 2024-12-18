@@ -1,4 +1,4 @@
-import { OpportunitiesController } from './controllers/OpportunitiesController';
+import { OpportunitiesController } from '../controllers/OpportunitiesController';
 
 
 export const opportunitiesRoutes = (req: any, res: any): void => {

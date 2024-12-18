@@ -1,5 +1,5 @@
-import { GetOpportunitiesUseCase } from '../../../application/usecases/GetOpportunitiesUseCase';
-import { OpportunitiesDataSource } from '../../../infrastructure/db/database';
+import { GetOpportunitiesUseCase } from '../../application/usecases/GetOpportunitiesUseCase';
+import { OpportunitiesDataSource } from '../../infrastructure/db/database';
 
 export class OpportunitiesController {
   private useCase: GetOpportunitiesUseCase;
