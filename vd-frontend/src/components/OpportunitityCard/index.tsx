@@ -1,6 +1,6 @@
 import { Opportunity } from "../../types/entities"
 import styled from "styled-components"
-import MatchingScore from "./matchingScore"
+import MatchingScore from "./MatchingScore"
 import LogoBlock from "./Logoblock"
 import StatBlock from "./StatBlock"
 

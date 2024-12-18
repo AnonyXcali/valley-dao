@@ -18,6 +18,10 @@ const HomeWrapper = styled.div`
   margin: 0 auto;
   background: #fff;
   padding: 20px 0px 20px 0px;
+
+  @media(max-width: 1024px) {
+    width: 100%;
+  }
 `
 
 const SectionWrap = styled.div`

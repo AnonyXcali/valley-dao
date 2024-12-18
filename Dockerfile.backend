@@ -1,0 +1,16 @@
+# Stage 1: Build the backend
+FROM node:18 AS backend-build
+WORKDIR /vd-backend
+COPY vd-backend/package*.json ./
+RUN npm install
+COPY vd-backend ./
+RUN npm run build # Compile TypeScript files into 'dist'
+
+# Stage 2: Serve the backend
+FROM node:18
+WORKDIR /vd-backend
+COPY --from=backend-build /vd-backend/dist ./dist
+COPY --from=backend-build /vd-backend/node_modules ./node_modules
+
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
