@@ -16,8 +16,12 @@ const LogoBlockCard = styled.div`
   }
 `
 
+/**
+ * @function LogoBlock
+ * @returns stateless component as a placeholder for Logo for
+ * an opportunity
+ */
 export default function LogoBlock() {
-
   return (
     <LogoBlockCard>
       <p>

@@ -29,7 +29,11 @@ const StatDiv = styled.div`
 `
 
 
-
+/**
+ * @function StatsBlock
+ * @returns stateless component for rendering a StatBlock with
+ * provided statisic type and the statistic itself.
+ */
 export default function StatsBlock({
   stat,
   type,

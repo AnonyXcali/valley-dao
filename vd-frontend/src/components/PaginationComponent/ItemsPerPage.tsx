@@ -17,9 +17,22 @@ const StyledDiv = styled.div`
   }
 `
 
+/**
+ * @function OpportunitiesListing
+ * @returns A component for rendering selection for
+ * number of items in a page.
+ * 
+ * Uses state handling functions via react-redux
+ */
 export default function ItemsPerPage() {
   const dispatch = useDispatch<AppDispatch>();
 
+  /**
+ * @function handleChange
+ * @returns void
+ * 
+ * Updates the global store for number of items in a page.
+ */
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const {
       target: {

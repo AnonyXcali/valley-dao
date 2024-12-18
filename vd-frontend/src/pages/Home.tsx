@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
-import { useFetchOpportunitiesQuery } from '../store/slices/apiSlice';
-import { useDebounce } from '../hooks/useDebounce';
-import SearchComponent from '../components/SearchComponent';
-import LoadingComponent from '../components/Loader';
-import ErrorComponent from '../components/Error';
-import OpportunitiesListing from '../components/OpportunityListing';
-import ZeroState from '../components/ZeroState';
-import { ItemsPerPage } from '../components/PaginationComponent';
-import styled from 'styled-components';
-import { Pages } from '../components/PaginationComponent';
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store/store'
+import { useFetchOpportunitiesQuery } from '../store/slices/apiSlice'
+import { useDebounce } from '../hooks/useDebounce'
+import SearchComponent from '../components/SearchComponent'
+import LoadingComponent from '../components/Loader'
+import ErrorComponent from '../components/Error'
+import OpportunitiesListing from '../components/OpportunityListing'
+import ZeroState from '../components/ZeroState'
+import { ItemsPerPage } from '../components/PaginationComponent'
+import styled from 'styled-components'
+import { Pages } from '../components/PaginationComponent'
 
 
 const HomeWrapper = styled.div`
@@ -48,12 +48,29 @@ const DescriptionWrap = styled.div`
   }
 `
 
+
+/**
+ * @function OpportunitiesHome
+ * @returns This component is the root page of the application
+ * 
+ * 1) It uses global state from react-redux for
+ *   - Managing the current page size
+ *   - Managing the current page
+ *   - Structure the application for
+ *      - Search Component
+ *      - Number of Items in a Page
+ *      - Listing of Opportunities
+ *          - Rendering an Opportunity
+ *      - Showing page buttons for pagination
+ */
 const OpportunitiesHome: React.FC = () => {
-  const itemsPerPage: number = useSelector((state: RootState) => state.paginationReducer.itemsPerPage);
-  const page: number = useSelector((state: RootState) => state.paginationReducer.pageNumber);
+  const itemsPerPage: number = useSelector((state: RootState) => state.paginationReducer.itemsPerPage)
+  const page: number = useSelector((state: RootState) => state.paginationReducer.pageNumber)
   const [searchQuery, setSearchQuery] = useState(''); // Manage search input locally
-  const { data: opportunities, error, isLoading } = useFetchOpportunitiesQuery(searchQuery);
+  const { data: opportunities, error, isLoading } = useFetchOpportunitiesQuery(searchQuery)
   
+  //Running a debounce search with delay of 500ms after
+  //user stops typing
   const debouncedSearch = useDebounce(
     (value: string) => {
       setSearchQuery(value);
@@ -62,12 +79,15 @@ const OpportunitiesHome: React.FC = () => {
     500
   );
 
+  //Running a search after 2 valid keystrokes.
   const handleSearchChange = (text: string) => {
     if(text.length >= 2 || !text.length) {
       debouncedSearch(text);
     }
   };
 
+  //Paginating based on number of items in the page and
+  //current page number.
   const paginatedValues = opportunities && opportunities.slice(
     (page - 1) * itemsPerPage, 
     page * itemsPerPage

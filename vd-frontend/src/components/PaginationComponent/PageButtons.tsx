@@ -23,6 +23,14 @@ const StyledButton = styled.button`
 `
 
 
+ /**
+ * @function Pages
+ * @returns A component for rendering page buttons for
+ * based on total number of items provided by the backend
+ * api
+ * 
+ * Uses state handling functions via react-redux
+ */
 export default function Pages({
   totalButtons,
   currentPage,
@@ -32,6 +40,12 @@ export default function Pages({
 }) {
   const dispatch = useDispatch<AppDispatch>();
 
+   /**
+ * @function handleChange
+ * @returns void
+ * 
+ * Updates the global store for current page number.
+ */
   const handleChange = (page: number) => {
     dispatch(setPage(page))
   }

@@ -1,4 +1,7 @@
-
+/**
+ * interface conforming to Opportunity class 
+ * in backend provided response
+ */
 export interface Opportunity {
   id: number;
   title: string;

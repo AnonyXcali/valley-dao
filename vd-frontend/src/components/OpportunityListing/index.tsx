@@ -1,5 +1,5 @@
 import { Opportunity } from '../../types/entities';
-import OpportunityCard from '../OpportunitityCard';
+import OpportunityCard from '../OpportunityCard';
 import styled from 'styled-components';
 
 const StyledUL = styled.ul`
@@ -15,6 +15,11 @@ type OpportunitiesListingProps = {
   opportunities: Array<Opportunity>
 }
 
+/**
+ * @function OpportunitiesListing
+ * @returns stateless component for rendering a list of
+ * opportunities provided.
+ */
 export default function OpportunitiesListing({
   opportunities,
 }: OpportunitiesListingProps) {

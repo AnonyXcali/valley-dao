@@ -1,7 +1,15 @@
-import { IOpportunitiesRepository } from '../../domain/interfaces/IOpportunitiesRepository';
-import { Opportunity } from '../../domain/entities/Opportunity';
-import opportunitiesData from '../../data/opportunities.json';
+import { IOpportunitiesRepository } from '../../domain/interfaces/IOpportunitiesRepository'
+import { Opportunity } from '../../domain/entities/Opportunity'
+import opportunitiesData from '../../data/opportunities.json'
 
+
+/**
+ * @class OpportunitiesDataSource
+ * this class implements IOpportunitiesRepository
+ * 
+ * It reads the opportunitiesData.json and provides objects of class Opportunity
+ * for the application to consume or optionally filter.
+ */
 export class OpportunitiesDataSource implements IOpportunitiesRepository {
   getAll(): Opportunity[] {
     return opportunitiesData.map(
@@ -16,6 +24,6 @@ export class OpportunitiesDataSource implements IOpportunitiesRepository {
           item.type,
           item.matching_score
         )
-    );
+    )
   }
 }

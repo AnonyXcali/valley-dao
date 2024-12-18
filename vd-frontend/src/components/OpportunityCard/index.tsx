@@ -40,10 +40,19 @@ type OpportunityCardProps = {
   opportunity: Opportunity,
 }
 
+/**
+ * @function OpportunityCard
+ * @returns Stateless Card Component holding all the details
+ * for the Opportunity prop propvided.
+ */
 export default function OpportunityCard({
   opportunity,
 }: OpportunityCardProps) {
 
+  /**
+   * this object holds the specific values that is
+   * rendered on the UI in a flex based component StatBlock
+   */
   const statsObj: Record<string, {
     type: string,
     value: string,
@@ -66,6 +75,12 @@ export default function OpportunityCard({
     }
   }
 
+
+  /**
+   * 
+   * @param text 
+   * @returns trimmed version of a sentence exceeding 70 characters
+   */
   const sentenceShortener = (text: string) => {
     if(text.length <= 70) {
       return text
@@ -76,7 +91,6 @@ export default function OpportunityCard({
   return (
     <StyledOpportunityCard>
       <CardHeader>
-        {/**Random Color Logo*/}
         <LogoBlock />
         {/**Matching Score*/}
         <MatchingScore

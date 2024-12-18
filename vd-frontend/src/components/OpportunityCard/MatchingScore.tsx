@@ -29,6 +29,11 @@ const PercentageDiv = styled.div`
   }
 `
 
+/**
+ * @function MatchingScore
+ * @returns stateless component as a placeholder for Logo for
+ * an opportunity.
+ */
 export default function MatchingScore({
   score,
 }: {

@@ -1,17 +1,22 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-// Define the initial state
+/**
+ * PaginationState is responsible for providing
+ * itemsPerPage - number of items per page
+ * pageNumber - current page number
+ * 
+ * This slice reducer is for the components to consume.
+ */
 interface PaginationState {
-  itemsPerPage: number;
+  itemsPerPage: number
   pageNumber: number,
 }
 
 const initialState: PaginationState = {
   itemsPerPage: 5,
   pageNumber: 1,
-};
+}
 
-// Create the slice
 const paginationSlice = createSlice({
   name: 'counter',
   initialState,
@@ -23,8 +28,8 @@ const paginationSlice = createSlice({
       state.pageNumber = action.payload
     }
   },
-});
+})
 
-export const { setItemsPerPage, setPage } = paginationSlice.actions;
+export const { setItemsPerPage, setPage } = paginationSlice.actions
 
-export default paginationSlice.reducer;
+export default paginationSlice.reducer

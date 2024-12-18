@@ -1,32 +1,44 @@
-import http, { IncomingMessage, ServerResponse } from 'http';
+import http, { IncomingMessage, ServerResponse } from 'http'
 
+/**
+ * @class HTTPServer
+ * this class implements NodeJS server serving method
+ * Meant to be a singelton class for the entire application.
+ */
 export class HttpServer {
   constructor(private port: number) {}
 
+  /**
+   * @function start
+   * @param routeHandler
+   * 
+   * This creates a server via a singleton instance of the HTTPClass.
+   */
   start(routeHandler: (req: IncomingMessage, res: ServerResponse) => void): void {
     const server = http.createServer((req, res) => {
-      // Add CORS headers
-      this.addCorsHeaders(res);
+      this.addCorsHeaders(res)
 
-      // Handle preflight requests
       if (req.method === 'OPTIONS') {
-        res.writeHead(204); // No Content
-        res.end();
-        return;
+        res.writeHead(204) // No Content
+        res.end()
+        return
       }
-
-      // Delegate to the route handler
-      routeHandler(req, res);
-    });
+      routeHandler(req, res)
+    })
 
     server.listen(this.port, () => {
-      console.log(`Server is running on http://localhost:${this.port}`);
-    });
+      console.log(`Server is running on http://localhost:${this.port}`)
+    })
   }
 
+  /**
+   * @function addCorsHeaders
+   * @param res 
+   * Handles CORS related configuration.
+   */
   private addCorsHeaders(res: ServerResponse): void {
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins (change to specific origin for production)
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allowed methods
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allowed headers
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
   }
 }

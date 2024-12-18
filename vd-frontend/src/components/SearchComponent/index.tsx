@@ -21,6 +21,13 @@ type SearchComponentProps = {
   type: string,
 }
 
+ /**
+ * @function SearchComponent
+ * @returns input based component that triggers the provided
+ * function.
+ * 
+ * Has a local state to update UI.
+ */
 export default function SearchComponent({
   searchFunction,
   placeholder,

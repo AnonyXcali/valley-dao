@@ -13,6 +13,10 @@ const NavbarWrap = styled.div`
   }
 `
 
+/**
+ * @function Navbar
+ * @returns A stateless component to render navbar on the UI.
+ */
 export default function Navbar() {
   return (
     <NavbarWrap>
