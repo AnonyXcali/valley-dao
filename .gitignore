@@ -1,0 +1,14 @@
+# Node.js
+node_modules/
+*.log
+
+# Environment Variables
+.env
+.env.local
+
+# OS Generated Files
+.DS_Store
+
+# Build Files
+dist/
+build/
