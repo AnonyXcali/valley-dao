@@ -1,50 +1,70 @@
-# React + TypeScript + Vite
+# VD-Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Application Overview](https://drive.google.com/uc?id=192_I0Qy_u-pQLIvZ3JnWPV3WykPWlM_L)
 
-Currently, two official plugins are available:
+This project is a **React + Vite + TypeScript** frontend application that displays a list of opportunities fetched from a Node.js backend API. The opportunities data is provided by vd-backend service.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **React + Vite**: Modern frontend setup with blazing-fast development and build processes.
+- **TypeScript**: Strong typing for enhanced developer experience and maintainability.
+- **Redux Toolkit**: State management with simplified setup, including:
+  - RTK Query for API integration.
+  - Pagination logic for managing paginated opportunities.
+- **Styled-Components**: For styling React components.
+- **Zustand**: Lightweight state management for transient states.
+- **React Router**: For navigation between routes.
+- **Debounced Search**: Efficient API calls using debouncing logic for improved performance.
+- **Runs on Port 8080**: The development server runs by default on port `8080`.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Dependencies
 
-- Configure the top-level `parserOptions` property like this:
+The application uses the following libraries:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### **Core Dependencies**
+- **React**: UI library.
+- **Redux Toolkit**: State management.
+- **React Router**: Routing.
+- **Styled-Components**: Styling.
+- **Zustand**: Lightweight state management.
+- **Axios**: API requests.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### **Dev Dependencies**
+- **Vite**: Fast bundler and development server.
+- **TypeScript**: Strongly typed JavaScript.
+- **ESLint**: For linting and maintaining code quality.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Refer to the `package.json` for the complete list of dependencies.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd vd-frontend
+   ```
+2. Install Dependencies
+  ```bash
+  yarn install
+  ```
+
+3. Start Development Server
+  ```bash
+  yarn dev
+  ```
+
+4. Scripts
+	•	yarn dev: Starts the development server.
+	•	yarn build: Builds the project for production.
+	•	yarn preview: Previews the production build.
+	•	yarn lint: Lints the codebase.
+
+5. API Integration
+  ```plaintext
+  GET /opportunities?search=<search-text>
+  ```
+
+6. Features
+  • Opportunities are displayed with pagination.
+	•	A debounced search input prevents excessive API calls.
+	•	Paginated values are calculated on the client-side.
