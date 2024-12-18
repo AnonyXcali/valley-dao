@@ -1,5 +1,7 @@
 # ValleyDAO Assignment
 
+![Application Overview](https://drive.google.com/uc?id=192_I0Qy_u-pQLIvZ3JnWPV3WykPWlM_L)
+
 Welcome to the **ValleyDAO Assignment**! This project implements a **SOLID-based Node.js TypeScript backend** and a **modern React TypeScript frontend**. The backend follows a clean architecture, while the frontend adopts modular best practices, leveraging libraries such as Zustand, Styled Components, and React Router.
 
 ---
